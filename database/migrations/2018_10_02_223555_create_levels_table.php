@@ -16,6 +16,7 @@ class CreateLevelsTable extends Migration
         Schema::create('levels', function (Blueprint $table) {
             $table->increments('id');
             $table->double('centimeter');
+            $table->unsignedInteger('number');
             $table->timestamps();
         });
     }
