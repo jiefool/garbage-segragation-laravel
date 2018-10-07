@@ -42,26 +42,7 @@ class LevelController extends Controller
        	}
        	else{
        	$centi = rand(401,700);
-       	$config = Configuration::getDefaultConfiguration();
-		  $config->setApiKey('Authorization','eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTUzMTM2Njg5MywiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjU2NjUwLCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.vQruu6mozvzOLZZk6SdkQglx0tdolQrzup5em7EhYf8');
-		$apiClient = new ApiClient($config);
-		$messageClient = new MessageApi($apiClient);
-		$contactList = \App\Contact::all();
-		$contacts = [];
-
-		foreach ($contactList as $contact) {
-
-
-			$sendMessageRequest = new SendMessageRequest([
-			    'phoneNumber' => $contact->contact,
-			    'message' => 'Pahibalo dagan namo kay ang tubig ning nasaka na!',
-			    'deviceId' => 96102
-			]);
-
-			array_push($contacts, $sendMessageRequest);
-
-		}
-		$sendMessages = $messageClient->sendMessages($contacts);
+       	
 
        	}
 
