@@ -131,4 +131,6 @@
 
     </script>
 
+    <script type="text/javascript">$('#usertable').DataTable();</script>
+
 @endsection

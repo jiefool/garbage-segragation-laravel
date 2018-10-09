@@ -323,14 +323,14 @@ $(function() {
     });
   }
 
-  if ($("#areaChart").length) {
-    var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
-    var areaChart = new Chart(areaChartCanvas, {
-      type: 'line',
-      data: areaData,
-      options: areaOptions
-    });
-  }
+  // if ($("#areaChart").length) {
+  //   var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
+  //   var areaChart = new Chart(areaChartCanvas, {
+  //     type: 'line',
+  //     data: areaData,
+  //     options: areaOptions
+  //   });
+  // }
 
   if ($("#scatterChart").length) {
     var scatterChartCanvas = $("#scatterChart").get(0).getContext("2d");
