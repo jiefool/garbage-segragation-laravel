@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
         // $user->password = \Hash::make('123123');
         // $user->save();
         // $this->call(UsersTableSeeder::class);
+        
         for ($i=0; $i < 200; $i++) { 
         	
         	$level = new \App\Level;
