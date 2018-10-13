@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Level;
 use DB;
 use Carbon\Carbon;
+use App\Sent;
 
 class ReportController extends Controller
 {
@@ -29,6 +30,25 @@ class ReportController extends Controller
 		   	return view('report.print', compact('levels'));
 		}   
     	return view('report.index', compact('levels'));
+    }
+
+    public function message(Request $request){
+        if(!$request->has('date')){
+            $sents = Sent::get();
+            $date = 'All';
+            if($request->has('print')){
+                return view('report.index.print',compact('sents','date'));
+            }
+        }else{
+            $sents = Sent::whereDate('created_at',$request->date)
+                        ->get();
+            $date = $request->date;
+            if($request->has('print')){
+                return view('report.message.print',compact('sents','date'));
+            }
+        }
+
+        return view('report.message.index',compact('sents','date'));
     }
 
 }

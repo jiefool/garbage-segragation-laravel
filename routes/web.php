@@ -54,7 +54,7 @@ Route::prefix('/')->middleware('login.checker')->group(function(){
 	Route::prefix('report')->group(function(){
 
 		Route::get('/', 'ReportController@index');
-
+		Route::get('message', 'ReportController@message');
 	});
 
 });

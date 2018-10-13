@@ -46,11 +46,32 @@
             </div>
           </li>
           <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#reports" aria-expanded="false" aria-controls="reports">
+              <span class="menu-title">Reports</span>
+              <i class="menu-arrow"></i>
+              <i class="mdi mdi-account-card-details menu-icon"></i>
+            </a>
+            <div class="collapse" id="reports">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url('report') }}">
+                    Water Level
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url('report/message') }}">
+                    Message Sent
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <!-- <li class="nav-item">
             <a class="nav-link" href="{{ url('report') }}">
               <span class="menu-title">Reports</span>
               <i class="mdi mdi-file-chart menu-icon"></i>
             </a>
-          </li>
+          </li> -->
           <li class="nav-item">
             <a class="nav-link" href="{{ url('about') }}">
               <span class="menu-title">About</span>
