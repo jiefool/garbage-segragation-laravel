@@ -8,6 +8,7 @@ use SMSGatewayMe\Client\Configuration;
 use SMSGatewayMe\Client\Api\MessageApi;
 use SMSGatewayMe\Client\Model\SendMessageRequest;
 
+use App\Sent;
 
 class LevelController extends Controller
 {
@@ -16,6 +17,10 @@ class LevelController extends Controller
 
 
            
+              $config = Configuration::getDefaultConfiguration();
+              $config->setApiKey('Authorization','eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTUzOTQ4NzQ4MiwiZXhwIjo0MTAyNDQ0ODAwLCJ1aWQiOjYyNjUxLCJyb2xlcyI6WyJST0xFX1VTRVIiXX0.yWx_v_lUyN-9PwgqhBFHoiMEXx2EWCe2oXzndgQG470');
+              $apiClient = new ApiClient($config);
+                  $messageClient = new MessageApi($apiClient);
 
 
             
@@ -41,12 +46,16 @@ class LevelController extends Controller
             $contacts = [];
 
             foreach ($contactList as $contact) {
-
+                  $msg = 'Ang tubig ning aksyon na ug saka pag bantay bantay namo';
+                  $send = new Sent;
+                  $send->message = $msg;
+                  $send->contact_id = $contact->id;
+                  $send->save();
 
                   $sendMessageRequest = new SendMessageRequest([
                       'phoneNumber' => $contact->contact,
-                      'message' => 'Ang tubig ning aksyon na ug saka pag bantay bantay namo',
-                      'deviceId' => 96102
+                      'message' => $msg,
+                      'deviceId' => 103567
                   ]);
 
                   array_push($contacts, $sendMessageRequest);
@@ -63,11 +72,17 @@ class LevelController extends Controller
 
             foreach ($contactList as $contact) {
 
+              $msg = 'Palihug uli na inyong balay kay hapit na mobaha';
+                   $send = new Sent;
+                  $send->message = $msg;
+                  $send->contact_id = $contact->id;
+                  $send->save();
+                  
 
                   $sendMessageRequest = new SendMessageRequest([
                       'phoneNumber' => $contact->contact,
-                      'message' => 'Palihug uli na inyong balay kay hapit na mobaha',
-                      'deviceId' => 96102
+                      'message' => $msg,
+                      'deviceId' => 103567
                   ]);
 
                   array_push($contacts, $sendMessageRequest);
@@ -83,12 +98,15 @@ class LevelController extends Controller
             $contacts = [];
 
             foreach ($contactList as $contact) {
-
-
+                $msg = 'Pahibalo dagan namo kay ang tubig ning nasaka na!';
+                  $send = new Sent;
+                  $send->message = $msg;
+                  $send->contact_id = $contact->id;
+                  $send->save();
                   $sendMessageRequest = new SendMessageRequest([
                       'phoneNumber' => $contact->contact,
-                      'message' => 'Pahibalo dagan namo kay ang tubig ning nasaka na!',
-                      'deviceId' => 96102
+                      'message' => $msg,
+                      'deviceId' => 103567
                   ]);
 
                   array_push($contacts, $sendMessageRequest);

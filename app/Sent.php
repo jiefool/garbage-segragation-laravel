@@ -8,6 +8,6 @@ use App\Contact;
 class Sent extends Model
 {
     public function contact(){
-    	return $this->hasMany(Contact::class);
+    	return $this->belongsTo(Contact::class);
     }
 }

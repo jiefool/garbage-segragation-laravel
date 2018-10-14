@@ -15,7 +15,7 @@
                             <form class="row mb-4" method="get" action="{{ url('report/message') }}">
                             	@csrf
                               <div class="col-lg-4">
-                               	<input class="form-control" name="date" type="date"></input>
+                               	<input class="form-control" name="date" type="date" value="{{ request('date')}}"></input>
                               </div>
                               
                               <div class="col-lg-4">
@@ -28,6 +28,7 @@
                           <table class="table table-bordered">
                             <thead>
                               <tr>
+                                <th>Fullname</th>
                                 <th>Contact Number</th>
                                 <th>Message</th>
                                 <th>Date/Time</th>
@@ -36,9 +37,10 @@
                             <tbody>
                               @foreach($sents as $sent)
                                 <tr>
+                                  <td>{{ $sent->contact->fullname }}</td>
                                   <td>{{ $sent->contact->contact }}</td>
-                                  <td>{{ $sent->message </td>
-                                  <td>{{ $sent->created_at </td>
+                                  <td>{{ $sent->message }}</td>
+                                  <td>{{ $sent->created_at->format('F j, Y') }}</td>
                                 </tr>
                               @endforeach
                             </tbody>

@@ -36,7 +36,7 @@
                               <h4 class="font-weight-normal mb-3">Water Level
                                 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                               </h4>
-                              <h2 class="mb-5">Level 1</h2>
+                              <h2 class="mb-5">Level {{$current->number}}</h2>
                             </div>
                           </div>
                         </div>
