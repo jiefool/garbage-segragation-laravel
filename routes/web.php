@@ -11,14 +11,14 @@
 |
 */
 
-
+Route::get('/','HomeController@list');
 Route::prefix('/')->middleware('login.checker')->group(function(){
 
 	Route::get('/home', function(){
-		return redirect('/');
+		return redirect('/dashboard');
 	});
 
-	Route::get('/', 'HomeController@index')->name('home');
+	Route::get('/dashboard', 'HomeController@index')->name('home');
 
 
 	Route::prefix('administrator')->group(function(){

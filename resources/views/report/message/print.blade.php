@@ -16,6 +16,7 @@
                           <table class="table table-bordered">
                             <thead>
                               <tr>
+                                <th>Fullname</th>
                                 <th>Contact Number</th>
                                 <th>Message</th>
                                 <th>Date/Time</th>
@@ -24,9 +25,10 @@
                             <tbody>
                               @foreach($sents as $sent)
                                 <tr>
+                                  <td>{{ $sent->contact->fullname }}</td>
                                   <td>{{ $sent->contact->contact }}</td>
-                                  <td>{{ $sent->message </td>
-                                  <td>{{ $sent->created_at </td>
+                                  <td>{{ $sent->message }}</td>
+                                  <td>{{ $sent->created_at->format('F j, Y') }}</td>
                                 </tr>
                               @endforeach
                             </tbody>
