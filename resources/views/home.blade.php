@@ -25,8 +25,8 @@
                               <h4 class="font-weight-normal mb-3">Current Level
                                 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                               </h4>
-                              <h2 class="mb-5">{{ number_format($current->centimeter, 2) }} Centimeters</h2>
-                              <h6 class="card-text">{{ $current_label . ' by '. number_format($current_avg, 2) }} %</h6>
+                              <h2 class="mb-5">{{ number_format($currentA->centimeter, 2) }} Centimeters</h2>
+                              <h6 class="card-text">{{ $current_labelA . ' by '. number_format($current_avgA, 2) }} %</h6>
                             </div>
                           </div>
                         </div>
@@ -36,8 +36,8 @@
                               <h4 class="font-weight-normal mb-3">Daily Average Level
                                 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                               </h4>
-                              <h2 class="mb-5">{{ number_format($daily_avg, 2) }} Centimeters</h2>
-                              <h6 class="card-text">{{ $daily_label . ' by ' . number_format( $day_avg,2) }} %</h6>
+                              <h2 class="mb-5">{{ number_format($daily_avgA, 2) }} Centimeters</h2>
+                              <h6 class="card-text">{{ $daily_labelA . ' by ' . number_format( $day_avgA,2) }} %</h6>
                             </div>
                           </div>
                         </div>
@@ -47,7 +47,7 @@
                               <h4 class="font-weight-normal mb-3">Water Level
                                 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                               </h4>
-                              <h2 class="mb-5">Level {{$current->number}}</h2>
+                              <h2 class="mb-5">Level {{$currentA->number}}</h2>
                             </div>
                           </div>
                         </div>
@@ -74,8 +74,8 @@
                               <h4 class="font-weight-normal mb-3">Current Level
                                 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                               </h4>
-                              <h2 class="mb-5">{{ number_format($current->centimeter, 2) }} Centimeters</h2>
-                              <h6 class="card-text">{{ $current_label . ' by '. number_format($current_avg, 2) }} %</h6>
+                              <h2 class="mb-5">{{ number_format($currentB->centimeter, 2) }} Centimeters</h2>
+                              <h6 class="card-text">{{ $current_labelB . ' by '. number_format($current_avgB, 2) }} %</h6>
                             </div>
                           </div>
                         </div>
@@ -85,8 +85,8 @@
                               <h4 class="font-weight-normal mb-3">Daily Average Level
                                 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                               </h4>
-                              <h2 class="mb-5">{{ number_format($daily_avg, 2) }} Centimeters</h2>
-                              <h6 class="card-text">{{ $daily_label . ' by ' . number_format( $day_avg,2) }} %</h6>
+                              <h2 class="mb-5">{{ number_format($daily_avgB, 2) }} Centimeters</h2>
+                              <h6 class="card-text">{{ $daily_labelB . ' by ' . number_format( $day_avgB,2) }} %</h6>
                             </div>
                           </div>
                         </div>
@@ -96,7 +96,7 @@
                               <h4 class="font-weight-normal mb-3">Water Level
                                 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                               </h4>
-                              <h2 class="mb-5">Level {{$current->number}}</h2>
+                              <h2 class="mb-5">Level {{$currentB->number}}</h2>
                             </div>
                           </div>
                         </div>

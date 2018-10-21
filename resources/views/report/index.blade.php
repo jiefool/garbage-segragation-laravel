@@ -56,6 +56,7 @@
                                 <th>
                                   Water Level Average
                                 </th>
+                                <th class="text-center">Status</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -63,6 +64,18 @@
                                 <tr>
                                   <td>{{ $key }}</td>
                                   <td>{{ round($level->avg('centimeter'),3) }} cm</td>
+                                  @php $temp = round($level->avg('centimeter'),3) @endphp
+                                  <td class="text-center">
+                                    @if($temp <= 14)
+                                    <span class="badge badge-success">Normal</span>
+                                    @elseif($temp >= 15 && $temp <= 19)
+                                    <span class="badge badge-warning">Not Normal</span>
+                                    @elseif($temp >= 20 && $temp <= 24)
+                                    <span class="badge badge-danger">Danger</span>
+                                    @elseif($temp >= 25)
+                                    <span class="badge badge-danger">Critical</span>
+                                    @endif
+                                  </td>
                                 </tr>
                               @endforeach
                             </tbody>

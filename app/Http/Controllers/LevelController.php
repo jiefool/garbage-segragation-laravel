@@ -23,26 +23,31 @@ class LevelController extends Controller
                   $messageClient = new MessageApi($apiClient);
 
 
-            
+            $area_id = 1
             $level = request('level');
+
+            if($level > 100){
+              $area_id = 2;
+              $level = $level - 100;
+            }
             $centi = 0;
             if($level == 1){
 
-            $centi = rand(15,20);
+            $centi = rand(0,4);
             }
             elseif ($level == 2) {
-            $centi = rand(35,40);
+            $centi = rand(5,9);
             
             }
             elseif ($level == 3) {
-            $centi = rand(55,60);
+            $centi = rand(10,14);
             
             }
             elseif ($level == 4) {
-            $centi = rand(75,80);
+            $centi = rand(15,19);
 
 
-            $contactList = \App\Contact::all();
+            $contactList = \App\Contact::where('area_id', $area_id)->get();
             $contacts = [];
 
             foreach ($contactList as $contact) {
@@ -65,7 +70,7 @@ class LevelController extends Controller
             
             }
             elseif ($level == 5) {
-            $centi = rand(95,100);
+            $centi = rand(20,24);
 
             $contactList = \App\Contact::all();
             $contacts = [];
@@ -93,7 +98,7 @@ class LevelController extends Controller
             
             }
             else{
-            $centi = rand(110,200);
+            $centi = rand(25,30);
             $contactList = \App\Contact::all();
             $contacts = [];
 
@@ -118,6 +123,7 @@ class LevelController extends Controller
 
             $data = new \App\Level;
             $data->number = $level;
+            $data->area_id = $area_id;
             $data->centimeter = $centi;
             $data->save();
 
