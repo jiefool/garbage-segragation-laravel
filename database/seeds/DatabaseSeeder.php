@@ -11,6 +11,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+
+        $areaA = new \App\Area;
+        $areaA->area = 'A';
+        $areaA->location = '';
+        $areaA->save();
+
+        $areaB = new \App\Area;
+        $areaB->area = 'B';
+        $areaB->location = '';
+        $areaB->save();
+
         $user = new \App\User;
         $user->firstname = 'Water';
         $user->lastname = 'Water';

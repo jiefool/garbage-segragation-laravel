@@ -10,6 +10,7 @@
                   <div class="row">
                     <div class="col-lg-12 grid-margin stretch-card">
                       <div class="card">
+                        
                         <div class="card-body">
                           <h4 class="card-title mb-4">Water Level Report</h4>
 
@@ -27,18 +28,25 @@
 
 
                             <form class="row mb-4">
-                              <div class="col-lg-4">
+                              <div class="col-lg-3">
+                                @if(isset($area))
+                                {{Form::select('area', App\Area::pluck('area'), old('area', $area), array('class' => 'form-control'))}}
+                                @else
+                                {{Form::select('area', App\Area::pluck('area'), old('area'), array('class' => 'form-control'))}}
+                                @endif
+                               </div>
+                              <div class="col-lg-3">
                                 {!! Form::selectMonth('month',  $month, ['class' => 'form-control']) !!}
                               </div>
-                              <div class="col-lg-4">
+                              <div class="col-lg-3">
                                 {!! Form::selectRange('year', 2016, date('Y'), $year,['class' => 'form-control']) !!}
                               </div>
-                              <div class="col-lg-4">
+                              <div class="col-lg-3">
                                 <button type="submit" class="btn btn-gradient-primary" name="action" value="go">Go</button>
                                 <button type="submit" class="btn btn-gradient-danger" name="action" value="print">Print</button>
                               </div>
                             </form>
-
+                          @if(isset($levels))
                           <table class="table table-bordered">
                             <thead>
                               <tr>
@@ -59,6 +67,7 @@
                               @endforeach
                             </tbody>
                           </table>
+                          @endif
                         </div>
                       </div>
                     </div>

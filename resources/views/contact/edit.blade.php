@@ -56,6 +56,19 @@
                             </div>
 
                             <div class="form-group">
+                              <label for="area">Area</label>
+
+                              {{Form::select('area', App\Area::pluck('area'), old('area', $contact->area->area), array('class' => 'form-control'))}}
+
+                                @if ($errors->has('area'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('area') }}</strong>
+                                    </span>
+                                @endif
+
+                            </div>
+
+                            <div class="form-group">
                               <label for="contact">Contact Number</label>
 
                               <input id="contact" type="text" class="form-control{{ $errors->has('contact') ? ' is-invalid' : '' }}" name="contact" value="{{ old('contact', $contact->contact) }}" placeholder="Contact" required>

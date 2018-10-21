@@ -19,6 +19,7 @@ class ContactController extends Controller
             'lastname' => 'required|alpha',
             'address' => 'required|string',
             'contact' => 'required|string|max:11|min:11',
+            'area' => 'required'
         ]);
 
         $contact = new Contact;
@@ -26,6 +27,7 @@ class ContactController extends Controller
         $contact->lastname = $request->lastname;
         $contact->address = $request->address;
         $contact->contact = $request->contact;
+        $contact->area_id = $request->area+1;
         $contact->save();
 
         return redirect('contact/list')->withSuccess('New contact added successfully');
@@ -61,6 +63,8 @@ class ContactController extends Controller
             'lastname' => 'required|alpha',
             'address' => 'required|string',
             'contact' => 'required|string|max:11|min:11',
+            'area' => 'required'
+
         ]);
 
         $contact = Contact::find($request->id);
@@ -68,6 +72,7 @@ class ContactController extends Controller
         $contact->lastname = $request->lastname;
         $contact->address = $request->address;
         $contact->contact = $request->contact;
+        $contact->area_id = $request->area+1;
         $contact->save();
 
         return redirect('contact/list')->withUpdate('Contact updated successfully');

@@ -67,6 +67,9 @@
                                   Added On
                                 </th>
                                 <th>
+                                  Area
+                                </th>
+                                <th>
                                   Actions
                                 </th>
                               </tr>
@@ -79,6 +82,8 @@
                                   <td>{{ $contact->address }}</td>
                                   <td>{{ $contact->contact }}</td>
                                   <td>{{ $contact->created_at->format('M d, Y H:i:s A') }}</td>
+                                  <td>{{ $contact->area->area }}</td>
+
                                   <td style="width: 180px;text-align: center">
                                     <a class="btn btn-sm btn-primary" href="{{ url('contact/edit', $contact->id) }}">Edit</a>
                                     <button class="btn btn-sm btn-danger btn-delete" data-id="{{ $contact->id }}" data-token="{{ csrf_token() }}" type="button">Delete</button>

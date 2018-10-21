@@ -12,24 +12,29 @@ class ReportController extends Controller
 {
     public function index(Request $request)
     {	
+        if(!$request->has('month')){
+            return view('report.index');
+        }
     	$month = date('m');
-                            $year = date('Y');
-                            if(request('month') != null){
-                            $month = request('month');
-                             }
-                             if(request('year') != null){
-                              $year = request('year');
-                             }
+        $year = date('Y');
+        if(request('month') != null){
+        $month = request('month');
+         }
+         if(request('year') != null){
+          $year = request('year');
+         }
 
-    	$levels = Level::whereMonth('created_at',$month)->whereYear('created_at',$year)->orderBy('created_at', 'ASC')->get()
+
+    	$levels = Level::whereMonth('created_at',$month)->whereYear('created_at',$year)->where('area_id',request('area')+1)->orderBy('created_at', 'ASC')->get()
 		    ->groupBy(function($date) {
 		        return Carbon::parse($date->created_at)->format('d'); 
 		    });
 
-		if ($request->action == 'print') {
+		if($request->action == 'print') {
 		   	return view('report.print', compact('levels'));
-		}   
-    	return view('report.index', compact('levels'));
+		}
+        $area = request('area');
+    	return view('report.index', compact('levels','area'));
     }
 
     public function message(Request $request){
@@ -47,8 +52,8 @@ class ReportController extends Controller
                 return view('report.message.print',compact('sents','date'));
             }
         }
-
-        return view('report.message.index',compact('sents','date'));
+        $area = request('area');
+        return view('report.message.index',compact('sents','date','area'));
     }
 
 }

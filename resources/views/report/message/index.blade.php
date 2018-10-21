@@ -14,11 +14,18 @@
                           <h4 class="card-title mb-4">Message Sent Report</h4>
                             <form class="row mb-4" method="get" action="{{ url('report/message') }}">
                             	@csrf
-                              <div class="col-lg-4">
+                              <div class="col-lg-3">
+                                @if(isset($area))
+                                {{Form::select('area', App\Area::pluck('area'), old('area', $area), array('class' => 'form-control'))}}
+                                @else
+                                {{Form::select('area', App\Area::pluck('area'), old('area'), array('class' => 'form-control'))}}
+                                @endif
+                               </div>
+                              <div class="col-lg-3">
                                	<input class="form-control" name="date" type="date" value="{{ request('date')}}"></input>
                               </div>
                               
-                              <div class="col-lg-4">
+                              <div class="col-lg-3">
                                 <button type="submit" class="btn btn-gradient-primary" name="action" value="go">Go</button>
                                 <button type="submit" class="btn btn-gradient-danger" name="print" value="print">Print</button>
                               </div>
