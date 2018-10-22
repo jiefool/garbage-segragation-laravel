@@ -47,7 +47,7 @@
                               <h4 class="font-weight-normal mb-3">Water Level
                                 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                               </h4>
-                              <h2 class="mb-5">Level {{$currentA->number}}</h2>
+                              <h2 class="mb-5" >Level <span id="level_a">{{$currentA->number}} </span></h2>
                             </div>
                           </div>
                         </div>
@@ -96,7 +96,7 @@
                               <h4 class="font-weight-normal mb-3">Water Level
                                 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                               </h4>
-                              <h2 class="mb-5">Level {{$currentB->number}}</h2>
+                              <h2 class="mb-5">Level <span id="level_b">{{$currentB->number}} </span></h2>
                             </div>
                           </div>
                         </div>
@@ -125,13 +125,15 @@
 @endsection
 
 @section('scripts')
-    
+    <script type="text/javascript" src="{{ url('js/vue.js')}}"></script>
+    <script type="text/javascript" src="{{ url('js/socket.io.js')}}"></script>
+
     <script type="text/javascript">
       var areaData = {
-        labels: {!! json_encode($labels) !!},
+        labels: {!! json_encode($labelsA) !!},
         datasets: [{
           label: 'Centimeters',
-          data: {{ json_encode($values) }},
+          data: {{ json_encode($valuesA) }},
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -153,6 +155,34 @@
         }]
       };
 
+
+      var areaDataB = {
+        labels: {!! json_encode($labelsB) !!},
+        datasets: [{
+          label: 'Centimeters',
+          data: {{ json_encode($valuesB) }},
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
+            'rgba(75, 192, 192, 0.2)',
+            'rgba(153, 102, 255, 0.2)',
+            'rgba(255, 159, 64, 0.2)'
+          ],
+          borderColor: [
+            'rgba(255,99,132,1)',
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
+            'rgba(75, 192, 192, 1)',
+            'rgba(153, 102, 255, 1)',
+            'rgba(255, 159, 64, 1)'
+          ],
+          borderWidth: 1,
+          fill: true, // 3: no fill
+        }]
+      };
+
+
       var areaOptions = {
         plugins: {
           filler: {
@@ -162,21 +192,42 @@
       }
 
       var areaChartCanvas = $(".areaChart").get(0).getContext("2d");
-        var areaChart = new Chart(areaChartCanvas, {
+        var areaChartA = new Chart(areaChartCanvas, {
           type: 'line',
           data: areaData,
           options: areaOptions
         });
       var areaChartCanvas = $(".areaChart").get(1).getContext("2d");
-        var areaChart = new Chart(areaChartCanvas, {
+        var areaChartB = new Chart(areaChartCanvas, {
           type: 'line',
-          data: areaData,
+          data: areaDataB,
           options: areaOptions
         });
 
     </script>
     <script type="text/javascript">
       $(document).ready(function(){
+        var socket = io('http://localhost:3000');
+        socket.on('get-level-a', function(data){
+            if(data.number == 0){
+              return;
+            }
+            console.log(data);
+            $('#level_a').html(data.number);
+            areaChartA.data.labels.push(data.time);
+            areaChartA.data.datasets[0].data.push(data.centimeter);
+            areaChartA.update()
+          })
+
+          socket.on('get-level-b', function(data){
+            if(data.number == 0){
+              return;
+            }
+            $('#level_b').html(data.number);
+            areaChartB.data.labels.push(data.time);
+            areaChartB.data.datasets[0].data.push(data.centimeter);
+            areaChartB.update()
+          })
         $('#area-select').change(function(){
           if($(this).val() == "a"){
             $('#b').hide();
@@ -186,6 +237,8 @@
             $('#b').show();
           }
         });
+
+
       });
     </script>
 

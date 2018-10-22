@@ -7,7 +7,7 @@ use SMSGatewayMe\Client\ApiClient;
 use SMSGatewayMe\Client\Configuration;
 use SMSGatewayMe\Client\Api\MessageApi;
 use SMSGatewayMe\Client\Model\SendMessageRequest;
-
+use App\Http\Resources\LevelResource;
 use App\Sent;
 
 class LevelController extends Controller
@@ -23,7 +23,7 @@ class LevelController extends Controller
                   $messageClient = new MessageApi($apiClient);
 
 
-            $area_id = 1
+            $area_id = 1;
             $level = request('level');
 
             if($level > 100){
@@ -127,7 +127,7 @@ class LevelController extends Controller
             $data->centimeter = $centi;
             $data->save();
 
-            return $data;
+            return new LevelResource($data);
 
 
     }

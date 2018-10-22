@@ -27,16 +27,21 @@ class HomeController extends Controller
         $levels = Level::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at', 'ASC')->get();
         $levelsA = [];
         $levelsB = [];        
-        $labels = [];
-        $values = [];
-
+        $labelsA = [];
+        $labelsB = [];
+        $valuesA = [];
+        $valuesB = [];
         foreach ($levels as $level) {
             array_push($labels, $level->created_at->format('H:i A'));
             array_push($values, $level->centimeter);
             if($level->area_id == 1){
-                array_push($levelsA, $level);
+                array_push($levelsB, $level);
+                array_push($labelsA, $level->created_at->format('h:i A'));
+                array_push($valuesA, $level->centimeter);
             }else{
                 array_push($levelsB, $level);
+                array_push($labelsB, $level->created_at->format('h:i A'));
+                array_push($valuesB, $level->centimeter);
             }
         }
 
@@ -73,19 +78,23 @@ class HomeController extends Controller
     {
         $levels = Level::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at', 'ASC')->get();
         $levelsA = [];
-        $levelsB = []; 
-        $labels = [];
-        $values = [];
-
+        $levelsB = [];        
+        $labelsA = [];
+        $labelsB = [];
+        $valuesA = [];
+        $valuesB = [];
         foreach ($levels as $level) {
-            array_push($labels, $level->created_at->format('H:i A'));
-            array_push($values, $level->centimeter);
-             if($level->area_id == 1){
-                array_push($levelsA, $level);
+            if($level->area_id == 1){
+                array_push($levelsB, $level);
+                array_push($labelsA, $level->created_at->format('h:i A'));
+                array_push($valuesA, $level->centimeter);
             }else{
                 array_push($levelsB, $level);
+                array_push($labelsB, $level->created_at->format('h:i A'));
+                array_push($valuesB, $level->centimeter);
             }
         }
+
 
         
         $currentA = Level::where('area_id', 1)->orderBy('created_at', 'DESC')->first();
@@ -133,6 +142,6 @@ class HomeController extends Controller
         // $hour = Level::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->where('created_at', '>=', Carbon::now()->subHour())->avg('centimeter');
         // dd($hour);
 
-        return view('home', compact('labels', 'values', 'currentA', 'currentB', 'current_avgA','current_avgB','current_labelA','current_labelB', 'daily_avgA', 'daily_avgB', 'daily_labelA', 'daily_labelB', 'day_avgA', 'day_avgB'));
+        return view('home', compact('labelsA', 'valuesA', 'labelsB', 'valuesB','currentA', 'currentB', 'current_avgA','current_avgB','current_labelA','current_labelB', 'daily_avgA', 'daily_avgB', 'daily_labelA', 'daily_labelB', 'day_avgA', 'day_avgB'));
     }
 }
