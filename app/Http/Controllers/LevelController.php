@@ -46,28 +46,6 @@ class LevelController extends Controller
             elseif ($level == 4) {
             $centi = rand(15,19);
 
-
-            $contactList = \App\Contact::where('area_id', $area_id)->get();
-            $contacts = [];
-
-            foreach ($contactList as $contact) {
-                  $msg = 'Ang tubig ning aksyon na ug saka pag bantay bantay namo';
-                  $send = new Sent;
-                  $send->message = $msg;
-                  $send->contact_id = $contact->id;
-                  $send->save();
-
-                  $sendMessageRequest = new SendMessageRequest([
-                      'phoneNumber' => $contact->contact,
-                      'message' => $msg,
-                      'deviceId' => 103567
-                  ]);
-
-                  array_push($contacts, $sendMessageRequest);
-
-            }
-            $sendMessages = $messageClient->sendMessages($contacts);
-            
             }
             elseif ($level == 5) {
             $centi = rand(20,24);
@@ -77,7 +55,7 @@ class LevelController extends Controller
 
             foreach ($contactList as $contact) {
 
-              $msg = 'Palihug uli na inyong balay kay hapit na mobaha';
+              $msg = 'Pahibalo hapit na mapuno ang basurahan';
                    $send = new Sent;
                   $send->message = $msg;
                   $send->contact_id = $contact->id;
@@ -103,7 +81,7 @@ class LevelController extends Controller
             $contacts = [];
 
             foreach ($contactList as $contact) {
-                $msg = 'Pahibalo dagan namo kay ang tubig ning nasaka na!';
+                $msg = 'Palihug ug kuha sa basura sa basurahan kay puno na siya';
                   $send = new Sent;
                   $send->message = $msg;
                   $send->contact_id = $contact->id;

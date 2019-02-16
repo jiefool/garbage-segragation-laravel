@@ -94,7 +94,11 @@
                               <h4 class="font-weight-normal mb-3">Daily Average Level
                                 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                               </h4>
-                              <h2 class="mb-5">{{ number_format($current->centimeter, 2) }} Centimeters</h2>
+                              <h2 class="mb-5">
+                                @if($current != null)
+                                  {{ number_format($current->centimeter, 2) }} Centimeters
+                                @endif
+                              </h2>
                               <h6 class="card-text">{{ $current_label . ' by '. number_format($current_avg, 2) }} %</h6>
                             </div>
                           </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\Sent;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -42,6 +43,7 @@ class ContactController extends Controller
 
     public function destroy($id)
     {
+        Sent::where('contact_id',$id)->delete();
         $contact = Contact::find($id);
 
         $contact->delete();

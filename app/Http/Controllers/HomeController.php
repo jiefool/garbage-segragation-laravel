@@ -24,6 +24,9 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function list(){
+        $labels = array();
+        $values = array();
+        $current = new Level;
         $levels = Level::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at', 'ASC')->get();
         $levelsA = [];
         $levelsB = [];        
@@ -51,7 +54,8 @@ class HomeController extends Controller
 
         $current_movement = Level::orderBy('created_at', 'DESC')->take(2)->get()->toArray();
 
-        $current_avg = (1 - $current_movement[1]['centimeter'] / $current_movement[0]['centimeter']) * 100;
+        $cur_movement = $current_movement[0]['centimeter'] ? $current_movement[0]['centimeter'] : 1;
+        $current_avg = (1 - $current_movement[1]['centimeter'] / $cur_movement) * 100;
         $current_label = 'Increased';
 
         if ($current_movement[1]['centimeter'] > $current_movement[0]['centimeter']) {
@@ -72,7 +76,7 @@ class HomeController extends Controller
         // $hour = Level::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->where('created_at', '>=', Carbon::now()->subHour())->avg('centimeter');
         // dd($hour);
 
-        return view('index', compact('labels', 'values', 'currentA', 'currentB', 'current_avg', 'current_label', 'daily_avg', 'daily_label', 'day_avg'));
+        return view('index', compact('labels', 'values', 'currentA', 'currentB', 'current_avg', 'current_label', 'daily_avg', 'daily_label', 'day_avg', 'current'));
     }
     public function index()
     {
