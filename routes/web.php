@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/','HomeController@list');
+Route::get('/',function(){
+	return redirect('/dashboard');
+});
+
+
 Route::prefix('/')->middleware('login.checker')->group(function(){
 
 	Route::get('/home', function(){
