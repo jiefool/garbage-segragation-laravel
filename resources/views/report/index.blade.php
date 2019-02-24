@@ -30,9 +30,9 @@
                             <form class="row mb-4">
                               <div class="col-lg-3">
                                 @if(isset($area))
-                                {{Form::select('area', App\Area::pluck('area'), old('area', $area), array('class' => 'form-control'))}}
+                                {{Form::select('area', ['Biodegradable', 'Non-Biodegradable'], old('area', $area), array('class' => 'form-control'))}}
                                 @else
-                                {{Form::select('area', App\Area::pluck('area'), old('area'), array('class' => 'form-control'))}}
+                                {{Form::select('area', ['Biodegradable', 'Non-Biodegradable'], old('area'), array('class' => 'form-control'))}}
                                 @endif
                                </div>
                               <div class="col-lg-3">

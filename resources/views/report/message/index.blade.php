@@ -14,6 +14,7 @@
                           <h4 class="card-title mb-4">Message Sent Report</h4>
                             <form class="row mb-4" method="get" action="{{ url('report/message') }}">
                             	@csrf
+                              <!--
                               <div class="col-lg-3">
                                 @if(isset($area))
                                 {{Form::select('area', App\Area::pluck('area'), old('area', $area), array('class' => 'form-control'))}}
@@ -21,6 +22,7 @@
                                 {{Form::select('area', App\Area::pluck('area'), old('area'), array('class' => 'form-control'))}}
                                 @endif
                                </div>
+                              -->
                               <div class="col-lg-3">
                                	<input class="form-control" name="date" type="date" value="{{ request('date')}}"></input>
                               </div>
