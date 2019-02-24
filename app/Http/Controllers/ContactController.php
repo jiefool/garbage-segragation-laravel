@@ -20,7 +20,7 @@ class ContactController extends Controller
             'lastname' => 'required|alpha',
             'address' => 'required|string',
             'contact' => 'required|string|max:11|min:11',
-            'area' => 'required'
+           // 'area' => 'required'
         ]);
 
         $contact = new Contact;
@@ -55,7 +55,7 @@ class ContactController extends Controller
     {
         $contact = Contact::find($id);
 
-        return view('contact.edit', compact('contact'));   
+        return view('contact.edit', compact('contact'));
     }
 
     public function update(Request $request)

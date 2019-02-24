@@ -10,9 +10,9 @@
                   <div class="row">
                     <div class="col-lg-12 grid-margin stretch-card">
                       <div class="card">
-                        
+
                         <div class="card-body">
-                          <h4 class="card-title mb-4">Water Level Report</h4>
+                          <h4 class="card-title mb-4">Trash Level Report</h4>
 
                           @php
 
@@ -54,7 +54,7 @@
                                   Day
                                 </th>
                                 <th>
-                                  Water Level Average
+                                  Trash Level Average
                                 </th>
                                 <th class="text-center">Status</th>
                               </tr>

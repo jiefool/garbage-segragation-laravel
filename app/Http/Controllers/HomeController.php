@@ -29,7 +29,7 @@ class HomeController extends Controller
         $current = new Level;
         $levels = Level::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at', 'ASC')->get();
         $levelsA = [];
-        $levelsB = [];        
+        $levelsB = [];
         $labelsA = [];
         $labelsB = [];
         $valuesA = [];
@@ -67,7 +67,9 @@ class HomeController extends Controller
 
         $daily_label = 'Increased';
 
-        $day_avg = (1 - $yesterday_avg / $daily_avg) * 100;
+        if ($daily_avg){
+          $day_avg = (1 - $yesterday_avg / $daily_avg) * 100;
+        }
 
         if ($daily_avg < $yesterday_avg) {
             $daily_label = 'Decreased';
@@ -82,7 +84,7 @@ class HomeController extends Controller
     {
         $levels = Level::whereDay('created_at', date('d'))->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'))->orderBy('created_at', 'ASC')->get();
         $levelsA = [];
-        $levelsB = [];        
+        $levelsB = [];
         $labelsA = [];
         $labelsB = [];
         $valuesA = [];
@@ -100,7 +102,7 @@ class HomeController extends Controller
         }
 
 
-        
+
         $currentA = Level::where('area_id', 1)->orderBy('created_at', 'DESC')->first();
         $currentB = Level::where('area_id', 2)->orderBy('created_at', 'DESC')->first();
 
@@ -131,8 +133,16 @@ class HomeController extends Controller
         $daily_labelA = 'Increased';
         $daily_labelB = 'Increased';
 
-        $day_avgA = (1 - $yesterday_avgA / $daily_avgB) * 100;
-        $day_avgB = (1 - $yesterday_avgA / $daily_avgB) * 100;
+        if($daily_avgB){
+            $day_avgA = (1 - $yesterday_avgA / $daily_avgB) * 100;
+            $day_avgB = (1 - $yesterday_avgA / $daily_avgB) * 100;
+        }else{
+            $day_avgA = 0;
+            $day_avgB = 0;
+        }
+
+
+
 
 
         if ($daily_avgA < $yesterday_avgA) {

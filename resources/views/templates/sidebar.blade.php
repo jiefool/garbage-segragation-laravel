@@ -4,7 +4,7 @@
             <a href="#" class="nav-link">
               <div class="nav-profile-image">
                 <img src="{{ Storage::url(Auth::user()->avatar) }}" alt="profile">
-                <span class="login-status online"></span> <!--change to offline or busy as needed-->              
+                <span class="login-status online"></span> <!--change to offline or busy as needed-->
               </div>
               <div class="nav-profile-text d-flex flex-column">
                 <span class="font-weight-bold mb-2">{{ Auth::user()->firstname . ' ' . Auth::user()->lastname }}</span>
@@ -55,7 +55,7 @@
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
                   <a class="nav-link" href="{{ url('report') }}">
-                    Water Level
+                    Trash Level
                   </a>
                 </li>
                 <li class="nav-item">
@@ -66,17 +66,23 @@
               </ul>
             </div>
           </li>
-          <!-- <li class="nav-item">
+
+            <!--
+            <li class="nav-item">
             <a class="nav-link" href="{{ url('report') }}">
               <span class="menu-title">Reports</span>
               <i class="mdi mdi-file-chart menu-icon"></i>
             </a>
-          </li> -->
-          <li class="nav-item">
+            </li>
+            -->
+
+            <!--
+            <li class="nav-item">
             <a class="nav-link" href="{{ url('about') }}">
               <span class="menu-title">About</span>
               <i class="mdi mdi-information-outline menu-icon"></i>
             </a>
-          </li>
+            </li>
+            -->
         </ul>
       </nav>

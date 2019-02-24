@@ -41,6 +41,7 @@
 
                             </div>
 
+                            <!--
                             <div class="form-group">
                               <label for="area">Area</label>
 
@@ -53,6 +54,7 @@
                                 @endif
 
                             </div>
+                            -->
 
                             <div class="form-group">
                               <label for="address">Address</label>
@@ -79,7 +81,7 @@
                                 @endif
 
                             </div>
-                            
+
                             <button type="submit" class="btn btn-gradient-primary mr-2">Submit</button>
                           </form>
                         </div>
