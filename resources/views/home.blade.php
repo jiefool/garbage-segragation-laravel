@@ -8,15 +8,19 @@
             <div class="main-panel">
                 <div class="content-wrapper">
                     <div class="row">
-                      <div class="col col-md-2">
+                      <!-- <div class="col col-md-2">
                         <select class="form-control" id="area-select">
                           <option value="a">Biodegradable</option>
                           <option value="b">Non-Biodegrable</option>
                         </select>
-                       </div>
+                      </div> -->
                     </div>
                     <hr>
-                    <div id="a">
+                    
+
+
+                <div class="row">
+                  <div class="col-md-6" id="a">
                     <h1>Biodegradable</h1>
 
 
@@ -68,63 +72,67 @@
                           </div>
                         </div>
                     </div>
-                      </div>
+                  </div>
 
                       <!---B -->
-                <div id="b" style="display: none;">
-                  <h1>Non-Biodegradable</h1>
+                  <div class="col-md-6" id="b">
+                    <h1>Non-Biodegradable</h1>
 
 
-                    <!--
-                    <div class="row">
-                        <div class="col-md-4 stretch-card grid-margin">
-                          <div class="card bg-gradient-danger card-img-holder text-white">
-                            <div class="card-body">
-                              <h4 class="font-weight-normal mb-3">Current Level
-                                <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-                              </h4>
-                              <h2 class="mb-5">{{ number_format($currentB->centimeter, 2) }} Centimeters</h2>
-                              <h6 class="card-text">{{ $current_labelB . ' by '. number_format($current_avgB, 2) }} %</h6>
+                      <!--
+                      <div class="row">
+                          <div class="col-md-4 stretch-card grid-margin">
+                            <div class="card bg-gradient-danger card-img-holder text-white">
+                              <div class="card-body">
+                                <h4 class="font-weight-normal mb-3">Current Level
+                                  <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                                </h4>
+                                <h2 class="mb-5">{{ number_format($currentB->centimeter, 2) }} Centimeters</h2>
+                                <h6 class="card-text">{{ $current_labelB . ' by '. number_format($current_avgB, 2) }} %</h6>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="col-md-4 stretch-card grid-margin">
-                          <div class="card bg-gradient-info card-img-holder text-white">
-                            <div class="card-body">
-                              <h4 class="font-weight-normal mb-3">Daily Average Level
-                                <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-                              </h4>
-                              <h2 class="mb-5">{{ number_format($daily_avgB, 2) }} Centimeters</h2>
-                              <h6 class="card-text">{{ $daily_labelB . ' by ' . number_format( $day_avgB,2) }} %</h6>
+                          <div class="col-md-4 stretch-card grid-margin">
+                            <div class="card bg-gradient-info card-img-holder text-white">
+                              <div class="card-body">
+                                <h4 class="font-weight-normal mb-3">Daily Average Level
+                                  <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                                </h4>
+                                <h2 class="mb-5">{{ number_format($daily_avgB, 2) }} Centimeters</h2>
+                                <h6 class="card-text">{{ $daily_labelB . ' by ' . number_format( $day_avgB,2) }} %</h6>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                        <div class="col-md-4 stretch-card grid-margin">
-                          <div class="card bg-gradient-success card-img-holder text-white">
-                            <div class="card-body">
-                              <h4 class="font-weight-normal mb-3">Water Level
-                                <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-                              </h4>
-                              <h2 class="mb-5">Level <span id="level_b">{{$currentB->number}} </span></h2>
+                          <div class="col-md-4 stretch-card grid-margin">
+                            <div class="card bg-gradient-success card-img-holder text-white">
+                              <div class="card-body">
+                                <h4 class="font-weight-normal mb-3">Water Level
+                                  <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                                </h4>
+                                <h2 class="mb-5">Level <span id="level_b">{{$currentB->number}} </span></h2>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                    </div>
-                    -->
-
-
-                    <div class="row">
-                        <div class="col-lg-12 grid-margin stretch-card">
-                          <div class="card">
-                            <div class="card-body">
-                              <h4 class="card-title">Water Level Chart</h4>
-                              <canvas class="areaChart" style="height:250px"></canvas>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
                       </div>
+                      -->
+
+
+                      <div class="row">
+                          <div class="col-lg-12 grid-margin stretch-card">
+                            <div class="card">
+                              <div class="card-body">
+                                <h4 class="card-title">Trash Level Chart</h4>
+                                <canvas class="areaChart" style="height:250px"></canvas>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              
+
+
                 <footer class="footer">
                   <div class="d-sm-flex justify-content-center justify-content-sm-between">
                     <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2018 <a href="https://www.bootstrapdash.com/" target="_blank">Water Level Monitoring</a>. All rights reserved.</span>
@@ -240,15 +248,15 @@
             areaChartB.data.datasets[0].data.push(data.centimeter);
             areaChartB.update()
           })
-        $('#area-select').change(function(){
-          if($(this).val() == "a"){
-            $('#b').hide();
-            $('#a').show();
-          }else if($(this).val() == "b"){
-            $('#a').hide();
-            $('#b').show();
-          }
-        });
+        // $('#area-select').change(function(){
+        //   if($(this).val() == "a"){
+        //     $('#b').hide();
+        //     $('#a').show();
+        //   }else if($(this).val() == "b"){
+        //     $('#a').hide();
+        //     $('#b').show();
+        //   }
+        // });
 
 
       });
