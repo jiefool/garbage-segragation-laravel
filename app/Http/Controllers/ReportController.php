@@ -7,6 +7,8 @@ use App\Level;
 use DB;
 use Carbon\Carbon;
 use App\Sent;
+use App\GarbageType;
+use App\GarbageBag;
 
 class ReportController extends Controller
 {
@@ -55,5 +57,54 @@ class ReportController extends Controller
         $area = request('area');
         return view('report.message.index',compact('sents','date','area'));
     }
+
+    public function manualAdd(Request $request){
+        $selectedType = null;
+        $garbageBags = null;
+        if($request->type){
+            $selectedType = GarbageType::find($request->type);
+            $garbageBags = $selectedType->garbageBags;
+        }
+
+        $types = GarbageType::all();
+        return view('report.manual-add', compact('types', 'selectedType', 'garbageBags'));
+    }
+
+    public function addType(Request $request){
+        $request->validate([
+            'name' => 'required'
+        ]);
+
+        $type = new GarbageType;
+        $type->name = $request->name;
+        $type->save();
+
+        return redirect('report/manual-add');
+    }
+
+    public function addGarbageBag(Request $request){
+        $request->validate([
+            'type_id'=>'required',
+            'weight'=>'required|numeric',
+            'collect_date'=>'required'
+        ]);
+    }
+
+    public function addCollection(Request $request){
+        $request->validate([
+            'type_id'=>'required',
+            'weight'=>'required|numeric',
+            'collect_date'=>'required|date'
+        ]);
+
+        $gb = new GarbageBag;
+        $gb->garbage_type_id = $request->type_id;
+        $gb->weight = $request->weight;
+        $gb->collect_date = Carbon::parse($request->collect_date);
+        $gb->save();
+
+        return redirect('report/manual-add/'.$request->type_id);
+    }
+
 
 }

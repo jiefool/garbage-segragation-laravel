@@ -58,6 +58,9 @@ Route::prefix('/')->middleware('login.checker')->group(function(){
 	Route::prefix('report')->group(function(){
 
 		Route::get('/', 'ReportController@index');
+		Route::get('/manual-add/{type?}', 'ReportController@manualAdd');
+		Route::post('/add-type', 'ReportController@addType');
+		Route::post('/add-collection', 'ReportController@addCollection');
 		Route::get('message', 'ReportController@message');
 	});
 
