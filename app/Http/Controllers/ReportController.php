@@ -106,5 +106,16 @@ class ReportController extends Controller
         return redirect('report/manual-add/'.$request->type_id);
     }
 
+    public function deleteType(Request $request){
+        $type = GarbageType::find($request->type);
+        foreach($type->garbageBags as $gb){
+            $gb->delete();
+        }
+        
+        $type->delete();
+
+        return redirect('report/manual-add');
+    }
+
 
 }
