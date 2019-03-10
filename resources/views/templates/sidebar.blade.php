@@ -54,6 +54,11 @@
             <div class="collapse" id="reports">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
+                  <a class="nav-link" href="{{ url('report/manual-add') }}">
+                    Manual Add
+                  </a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="{{ url('report') }}">
                     Trash Level
                   </a>
