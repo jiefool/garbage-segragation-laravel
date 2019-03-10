@@ -117,14 +117,6 @@
                       -->
 
 
-<<<<<<< HEAD
-                    <div class="row">
-                        <div class="col-lg-12 grid-margin stretch-card">
-                          <div class="card">
-                            <div class="card-body">
-                              <h4 class="card-title">Trash Level Chart</h4>
-                              <canvas class="areaChart" style="height:250px"></canvas>
-=======
                       <div class="row">
                           <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
@@ -132,7 +124,6 @@
                                 <h4 class="card-title">Trash Level Chart</h4>
                                 <canvas class="areaChart" style="height:250px"></canvas>
                               </div>
->>>>>>> 84ddb049f34eb2d1b570118f6e06a2fd244dbe8a
                             </div>
                           </div>
                       </div>

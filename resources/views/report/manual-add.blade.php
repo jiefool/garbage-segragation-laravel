@@ -34,7 +34,7 @@
                                 @foreach($types as $type)
                                     <li>
                                         <a href="{{ url('report/manual-add', ['type'=>$type->id]) }}">{{$type->name}}</a>
-                                        <a href="{{ url('report/delete-type', ['type'=>$type->id]) }}">(Delete)</a>
+                                        <a href="{{ url('report/delete-type', ['type'=>$type->id]) }}" onclick="return confirm('Are you sure?')">(Delete)</a>
                                     </li>
                                 @endforeach
                             </div>
