@@ -55,7 +55,7 @@ class LevelController extends Controller
 
             foreach ($contactList as $contact) {
 
-              $msg = 'Pahibalo hapit na mapuno ang basurahan';
+              $msg = 'The trashbin is almost full thank you';
                    $send = new Sent;
                   $send->message = $msg;
                   $send->contact_id = $contact->id;
@@ -81,7 +81,7 @@ class LevelController extends Controller
             $contacts = [];
 
             foreach ($contactList as $contact) {
-                $msg = 'Palihug ug kuha sa basura sa basurahan kay puno na siya';
+                $msg = 'The trashbin is overloaded please collect the trash';
                   $send = new Sent;
                   $send->message = $msg;
                   $send->contact_id = $contact->id;

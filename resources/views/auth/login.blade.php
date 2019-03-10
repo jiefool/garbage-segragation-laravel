@@ -5,7 +5,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>WLMS - Login</title>
+  <title>Garbage Segregation System - Login</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('vendors/iconfonts/mdi/css/materialdesignicons.min.css') }}">
   <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
@@ -26,7 +26,7 @@
           <div class="col-lg-4 mx-auto">
             <div class="auth-form-light text-left p-5">
               <div class="brand-logo text-center">
-                <h1 style="color: skyblue;">Water Level Monitoring System</h1>
+                <h1 style="color: skyblue;">Garbage Segregation System</h1>
               </div>
               <h4>Hello! let's get started</h4>
               <h6 class="font-weight-light">Login to continue.</h6>

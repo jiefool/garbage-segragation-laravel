@@ -2,7 +2,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Gargabe Segregation System | Admin</title>
+  <title>WLMS | Admin</title>
   <!-- plugins:css -->
   <link rel="stylesheet" href="{{ asset('vendors/iconfonts/mdi/css/materialdesignicons.min.css') }}">
   <link rel="stylesheet" href="{{ asset('vendors/css/vendor.bundle.base.css') }}">
@@ -95,7 +95,7 @@
                                 <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                               </h4>
                               <h2 class="mb-5">
-                                @if($current != null)
+                                @if($current != nulls)
                                   {{ number_format($current->centimeter, 2) }} Centimeters
                                 @endif
                               </h2>
